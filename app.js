@@ -25,6 +25,7 @@ const agregarRouter= require('./routes/agregarRouter');
 const agregarRouterCancion= require('./routes/agregarRouter');
 
 const milistaRouter= require('./routes/milistaRouter');
+/* const milistaSelApodoRouter= require('./routes/milistaRouter'); */
 const milistaBorrarRouter= require('./routes/milistaRouter');
 
 
@@ -36,14 +37,9 @@ app.use('/agregar', agregarRouter);
 app.post('/cancion', agregarRouterCancion);
 
 app.use('/mimusica', milistaRouter);
+/* app.post('/selApodo', milistaSelApodoRouter) */
 app.post('/borrar', milistaBorrarRouter);
 
-/* 
-const generoRouter = require('./routes/generoRoutes');
-const mimusicaRouter = require('./routes/rankingRoutes');
-
-app.use('/generoRoutes', generoRouter);
-app.use('/mimusicaRoutes', mimusicaRouter); */
 
 app.listen(Port, ()=>{
     console.log(`Servidor corriendo en el Puerto ${Port}`);

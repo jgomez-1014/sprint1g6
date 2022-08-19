@@ -11,16 +11,57 @@ conexion = mysql.createConnection({
 
 conexion.connect(function (error) {
     if (error) throw error;
-    console.log("Se ha conectado a la DB con Exito");
+    console.log("Se ha conectado a la DataBase con Exito");
 })
 
-const milistaController = (req, res) => {
-    let sql = "SELECT * FROM APODOSTABLA";
+
+/* Controlador para Guardar el Apodo el Home */
+const milistaController = (req, res) =>{
+    
+    const { ApodoEX } = req.body;
+    console.log(ApodoEX);
+
+      //Validacion basica
+    if (ApodoEX == "") {
+    let validacion = "¡Esta vacio el campo eh 🤦 !";
+    res.render('mimusica', { validacion })
+    }
+    else {
+    let data = {
+        Apodo: ApodoEX
+    }
+   
+
+    let sql = "select * from CANCIONESTABLA where ApodoDB = 'Apodo1'"; //se deberian seleccionar solo las canciones del APODO
+    
     let query = conexion.query(sql, (err, results) => {
         if (err) throw err;
-        res.render('mimusica', { tabla1: 'APODOSTABLA', results })
+        res.render('mimusica', { tabla1: 'CANCIONESTABLA', results})
     })
+    };
+    
+    
 }
+
+/* const milistaController = (req, res) => {
+    let sql = "SELECT * FROM CANCIONESTABLA";
+    const { id, tituloDB, artistaDB, ApodoDB, favDB } = req.body;
+    let cancionestabla = {
+            id: id,
+            titulo: tituloDB,
+            artista: artistaDB,
+            Apodo: ApodoDB,
+            fav: favDB
+    }
+    console.table([cancionestabla]);
+    
+    let query = conexion.query(sql, (err, results) => {
+        if (err) throw err;
+        res.render('mimusica', { tabla1: 'CANCIONESTABLA', results, ApodoDB })
+    })
+} */
+
+
 
 const borrarlista = (req, res) => {
     console.log(req.body);
@@ -35,5 +76,6 @@ const borrarlista = (req, res) => {
 
 module.exports = {
     milistaController,
+    /* selApodo, */
     borrarlista
 };

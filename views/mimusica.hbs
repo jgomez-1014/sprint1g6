@@ -1,8 +1,27 @@
+{{!--  Ingresa Apodo --}}
+    <section class="container tips">
+        <div class="promos_table">
+                <form class="contacto_form" action="/mimusica" method="post">
+                <div class="contacto_input_div">
+                    <label for="ApodoEX" class="contacto_label2">Ingresa tu Apodo: </label>
+                    <input type="text" placeholder="..." id="ApodoEX" name="ApodoEX" class="contacto_input2">
+                </div>
+                <button type="submit" class="contacto_btn2" target="blank">Enviar</button>                
+            </form>
+            <h3 class="contacto_validacion">{{validacion}}
+            </h3>
+        </section>
+            </div>
+        </div>
+    </div>
+
+
 <section class="list">
     <section class="list_container container">
         <h2 class="list_title">
             <hr>
-                {{titulo}}
+                <h2 class="title">Hola, {{ApodoEX}} aca esta tu lista de canciones</h2><
+                <p class="mapa_detalle">Tabla:</p>
             <hr>
         </h2>
 
@@ -10,109 +29,24 @@
     <table class="table table-striped" id="mytable">
         <thead>
             <tr>
-                <th>titulo</th>
-                <th>artista</th>
-                <th>genero</th>
-                <th>Puntuación</th>
+                <th>Titulo</th>
+                <th>Artista</th>
+                <th>Apodo</th>
+                <th>Favorito</th>
             </tr>
         </thead>
         <tbody>
             {{#each results}}
             <tr>
-                <td> {{ profe_titulo}}</td>
-                <td> {{ profe_artista}}</td>
-                <td> {{ profe_genero}}</td>
-                <td> {{ profe_puntuacion}}</td>
-                <td>
-                    <a href="javascript:void(0);" class="btn btn-info edit" data-id="{{ profe_idreg}}" data-profe_titulo="{{ profe_titulo}}" data-profe_artista="{{ profe_artista}}" data-profe_genero="{{ profe_genero}}">Editar</a>    
-                    <a href="javascript:void(0);" class="btn btn-danger delete" data-id="{{ profe_idreg}}">Borrar</a>
-                </td>
+                <td> {{ tituloDB }}</td>
+                <td> {{ artistaDB }}</td>
+                <td> {{ ApodoDB }}</td>
+                <td> {{ favDB }}</td>
             </tr>
             {{/each}}
         </tbody>
     </table>
 </div>
-
-{{!-- AÑADIR Modal --}}
-{{!-- /EDITAR  --}}
-<form action="/profesoresUpdate" method="post">
-    <div class="modal fade" id="EditModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel"> Editar Datos </h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" data-bs-target="#my-modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">               
-                    <div class="form-group mt-3">
-                        <input type="text" name="profe_titulo" class=" form-control titulo" placeholder="Titulo de la Cancion" required>
-                    </div>
-                    <div class="form-group mt-3">
-                        <input type="text" name="profe_artista" class=" form-control artista" placeholder="Artista" required>
-                    </div>
-                    <div class="form-group mt-3">
-                        <input type="text" name="profe_genero" class=" form-control genero" placeholder="Genero" required>
-                    </div>
-                    
-                    <div class="modal-footer mt-3">
-                        <input type="hidden" name="profe_idreg" class="profe_idreg" required>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" data-bs-target="#my-modal" aria-label="Close"></button>
-                        <button type="submit" class="btn btn-primary">Actualizar</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</form>
-
-{{!-- Modal delete --}}
-<form id="add-row-form" action="/profesoresDelete" method="post">
-    <div class="modal fade" id="DeleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="myModalLabel">Eliminar Datos</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" data-bs-target="#my-modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-            <strong>¿Estás seguro que desea eliminar este registro?</strong>
-            </div>
-            <div class="modal-footer">
-            <input type="hidden" name="profe_idreg" class="form-control profe_idreg2" required>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" data-bs-target="#my-modal" aria-label="Close"></button>
-                <button type="submit" class="btn btn-success">Eliminar</button>
-            </div>
-                </div>
-        </div>
-    </div>
-</form>
-
-<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-<script src="/assets/jquery-3.3.1.js"></script>
-
-<script>
-$(document).ready(function(){
-    //Mostrar datos al modal para editar registro
-    $('#mytable').on('click', '.edit', function(){
-        let profe_idreg = $(this).data('id');
-        let profe_titulo = $(this).data('profe_titulo');
-        let profe_artista = $(this).data('profe_artista');
-        let profe_genero = $(this).data('profe_genero');
-        
-        $('#EditModal').modal('show');
-        $('.titulo').val(profe_titulo);
-        $('.artista').val(profe_artista);
-        $('.genero').val(profe_genero);
-        $('.profe_idreg').val(profe_idreg);
-    })
-    // Modal DELETE     
-    $('#mytable').on('click', '.delete', function(){
-        let profe_idreg = $(this).data('id');
-        $('#DeleteModal').modal('show');
-        $('.profe_idreg2').val(profe_idreg);
-    })
-})
-</script>
 
 </section>
 

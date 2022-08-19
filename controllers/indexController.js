@@ -22,6 +22,7 @@ const indexApodoController = (req, res) =>{
     let validacion = "Hemos guardado tu apodo no lo olvides";
     res.render('index', { validacion })
     let sql = "INSERT INTO APODOSTABLA SET ?";
+
     let query = conexion.query(sql, data, (err, results) => {
         if (err) throw err;
     })};

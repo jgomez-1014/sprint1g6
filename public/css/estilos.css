@@ -296,6 +296,17 @@ body{
     margin: 0 auto;
 }
 
+.contacto_label2{
+    color: rgb(234, 89, 16);
+    font-size: 1rem;
+    font-weight: 600;
+    margin-top: 10px;
+    display: flex;
+    align-self: center;
+    flex-wrap: wrap;
+    margin: 0 auto;
+}
+
 .contacto_labelcheck{
     color: rgb(234, 89, 16);
     font-size: 2rem;
@@ -337,6 +348,21 @@ body{
     font-weight: 600;
     align-content: center;
 }
+.contacto_input2{
+    background-color: rgba(250, 147, 96, 0.559);
+    height: 50px;
+    width: 100%;
+    display: block;
+    padding-left: 10px;
+    border-radius: 10px;
+    font-size: 2rem;
+    outline: none;
+    border: none;
+    margin-right: 0px;
+    color: rgb(255, 255, 255);
+    font-weight: 600;
+    align-content: center;
+}
 
 .contacto_input::placeholder{
     color: rgb(255, 255, 255);
@@ -359,6 +385,18 @@ body{
     border-radius: 20px;
     font-size: 2.2rem;
     font-weight: 800;
+}
+
+.contacto_btn2{
+    display: inline-block;
+    background-color: rgb(234, 89, 16);
+    color: #ffff;
+    justify-self: center;
+    text-decoration: none;
+    padding: 10px 40px;
+    border-radius: 20px;
+    font-size: 1.5rem;
+    font-weight: 600;
 }
 
 .list_title{
